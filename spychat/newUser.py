@@ -49,4 +49,5 @@ def new_spy():
             print "Invalid Rating Input. Try again."
     # Sets Spy is Online
     spy['is_online'] = True
+    spy['pass'] = raw_input("Enter New Password")
     print spy['name'] + str(spy['age']) + str(spy['rating'])
