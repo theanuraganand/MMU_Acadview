@@ -5,7 +5,7 @@ print ("Spy Chat Started")
 spy['name'] = raw_input("Hey! Whats your name?")
 # check for null string
 if len(spy['name']) > 0:
-    matchObj = re.match(r'[a-zA-Z\s]+$', spy['name'])
+    matchObj = re.match('^[a-zA-Z\s]+$', spy['name'])
     if matchObj:
         # salutation based on Gender and Marrital Status
         gender = raw_input("Gender? M/F")
@@ -28,13 +28,13 @@ if len(spy['name']) > 0:
 else:
     print "Invalid Length of Name"
 
-while True:
-    try:
-        # converts age-String to int
-        spy['age'] = int(raw_input("Enter your age. ?"))
-        break
-    except ValueError:
-        print "Invalid Age Input. Try again."
+    while True:
+        try:
+            # converts age-String to int
+            spy['age'] = int(raw_input("Enter your age. ?"))
+            break
+        except ValueError:
+            print "Invalid Age Input. Try again."
 
     # concats sal and name
     spy['name'] = spy['salutation'] + " " + spy['name']
