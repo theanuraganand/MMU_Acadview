@@ -2,6 +2,7 @@ from newUser import new_spy
 from spy_dao import create_spy
 from spy_dao import read_spy
 from spyDetails import spy
+from start_chat import start_chat
 print ("Spy Chat Started")
 answer = raw_input("Sign In / Sign Up (1/2)")
 if answer == "1":
@@ -13,6 +14,9 @@ if answer == "1":
         pas = raw_input("Enter password")
         if spy['pass'] == pas:
             print "login sucess"
+            read_spy(name)
+            # starting chat
+            start_chat(spy['name'], spy['age'], spy['rating'], spy['is_online'])
         else:
             print "invalid password"
     else:
