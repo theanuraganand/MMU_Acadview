@@ -23,9 +23,9 @@ sql = """CREATE TABLE SPY (
          AGE INT,
          RATING FLOAT,  
          ISONLINE CHAR(1))"""
+insertstmt = ("INSERT INTO SPY VALUES ('%s', '%s', '%s', '%s', '%s')" % ("ok", "ok", "ok", "ok", "ok"))
+cursor.execute(insertstmt)
 
-cursor.execute(sql)
-
-
+db.commit()
 # disconnect from server
 db.close()
