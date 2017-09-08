@@ -3,6 +3,8 @@ from spy_dao import create_spy
 from spy_dao import read_spy
 from spyDetails import spy
 from start_chat import start_chat
+from steganography import steganography
+
 print ("Spy Chat Started")
 answer = raw_input("Sign In / Sign Up (1/2)")
 if answer == "1":
