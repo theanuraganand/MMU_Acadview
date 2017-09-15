@@ -1,45 +1,60 @@
-from globals import status
+from spy_details import spy
+from globals import STATUS_MESSAGES, current_status_message
+from termcolor import colored
 
-# updated status message.
-updated_status_message = None
+# meathod to add status
+def add_status(current_status_message):
 
-def add_status(current):
-    if current != None:
-        print 'Current Message %s \n' % (current)
+    # status in present
+    updated_status_message = None
+
+    # check if current status is set or not
+    if current_status_message != None:
+        print 'Your current status message is %s \n' % (current_status_message)
     else:
-        print "No Current Msg \n"
+        print 'You don\'t have any status message currently \n'
 
-    opt = raw_input("Choose from earlier status (y/n)? ")
+    # Ask user to choose default status or an old status.
+    default = raw_input(colored("Do you want to select from the older status (y/n)? ",'teal'))
 
-    if opt.upper() == "N":
-        new_message = raw_input("New Message:\n")
+    # when spy wants to add another status rather than existing one
+    if default.upper() == "N":
+        new_status_message = raw_input(colored("What status message do you want to set?: ",'teal'))
 
-        # validations
-
-        if len(new_message) > 0:
-            status.append(new_message)
-            new_status = new_message
-            print 'Updated Status: %s' % (new_status)
+        # validating users input using if.
+        if len(new_status_message) > 0:
+            # adding new status to default status or older status list.
+            STATUS_MESSAGES.append(new_status_message)
+            #updated status
+            updated_status_message = new_status_message
+            print 'Your updated status message is: %s' % (updated_status_message)
         else:
-            print "Null Input."
-    elif opt.upper() == 'Y':
-        count = 1
+            print "You did not provided any status message. Try again."
 
-        # print all msg by loop
-        for temp_msg in status:
-            print '%d. %s' % (count, temp_msg)
-            count = count + 1
+    # if spy wants to choose from existing status.
+    elif default.upper() == 'Y':
 
-        msg_opt = int(raw_input("\nEnter Choice !! \n"))
+        # counter for serial number of messages.
+        item_position = 1
 
-        # validate
+        # printing all older status messages so spy can choose
+        for message in STATUS_MESSAGES:
+            print '%d. %s' % (item_position, message)
+            item_position = item_position + 1
 
-        if len(status) >= 0:
-            new_status = status[msg_opt - 1]
-            print 'Updated Status: %s' % new_status
+        # asking users choice which index of list he wants to choose
+        message_selection = int(raw_input(colored("\nChoose from the Index of status: ",'cyan')))
+
+        # validating users input and set status of choice if exist.
+        if len(STATUS_MESSAGES) >= message_selection:
+            #updating
+            updated_status_message = STATUS_MESSAGES[message_selection - 1]
+            print 'Your updated status message is: %s' % (updated_status_message)
+        # when user has wrong choice or choice that does not exist.
         else:
-            print "Invalid Input "
+            print "Invalid choice. Try again."
+    # when user has diffrent choice than yes and no
     else:
-        print 'Only Y/N'
-
-    return new_status
+        print 'The option you chose is not valid! Press either y or n.'
+    # updated message will be read
+    return updated_status_message

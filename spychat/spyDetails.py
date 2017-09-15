@@ -1,4 +1,4 @@
-# details of default user.
+# details of default spy.
 spy = {
     'name': 'Sherlock',
     'salutation': 'Mr.',

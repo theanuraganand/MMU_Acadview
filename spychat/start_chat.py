@@ -2,7 +2,7 @@ from add_status import add_status
 from add_friend import add_friend
 from select_friend import select_friend
 
-
+# meathod to start chat
 def start_chat(name, age, rating, status):
     if not (age > 12 and age < 50):
         # invalid age.

@@ -3,9 +3,9 @@ from spy_dao import create_spy
 from spy_dao import read_spy
 from spyDetails import spy
 from start_chat import start_chat
-from steganography import steganography
+from termcolor import colored
 
-print ("Spy Chat Started")
+print (colored("\nSpy Chat Started","blue"))
 answer = raw_input("Sign In / Sign Up (1/2)")
 if answer == "1":
     print "OK"
@@ -17,8 +17,8 @@ if answer == "1":
         if spy['pass'] == pas:
             print "login sucess"
             read_spy(name)
-            # starting chat
-            start_chat(spy['name'], spy['age'], spy['rating'], spy['is_online'])
+            # starting chat application.
+            start_chat(spy.name, spy.age, spy.rating, spy.is_online)
         else:
             print "invalid password"
     else:
@@ -27,3 +27,5 @@ if answer == "1":
 elif answer == "2":
     new_spy()
     create_spy()
+    # starting chat application.
+    start_chat(spy.name, spy.age, spy.rating, spy.is_online)
