@@ -1,16 +1,21 @@
+# importing friend, steganography library, and datetime
 from select_friend import select_friend
 from steganography.steganography import Steganography
 from spy_details import friends
 from send_message_help import send_message_help
 from spy_details import ChatMessage
+
+# importing regular expressions for proper validation
 import re
+
+# importing termcolor and colorama for colorful output.
 from termcolor import colored
 from colorama import init
 
 # initializing colorama
 init()
 
-# meathod for read message
+# function for read message
 def read_message():
     # choose friend from the list to communicate
     sender = select_friend()
@@ -18,7 +23,7 @@ def read_message():
     encrypted_image = raw_input("Provide encrypted image : ")
     pattern_e = '^[a-zA-Z]+\.jpg$'
 
-# exception handling if secret message is present or not
+# error handling if secret message is present or not
     try:
         secret_message = Steganography.decode(encrypted_image)
         print "The secret message is ",
@@ -45,11 +50,11 @@ def read_message():
             print (colored("You can help your friend by sending helping message.", 'cyan'))
             print (colored("Select the friend to send helping message", 'red'))
 
-        # calling the send message help function
-        send_message_help()
+            # calling the send message help function
+            send_message_help()
 
-        # the message has been sent successfully
-        print (colored("You just sent a message to help your friend.", 'magenta'))
+            # the message has been sent successfully
+            print (colored("You just sent a message to help your friend.", 'magenta'))
 
         # add the chat to sender
         new_chat = ChatMessage(secret_message, False)

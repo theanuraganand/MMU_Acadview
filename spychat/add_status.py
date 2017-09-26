@@ -1,11 +1,14 @@
+# importing spy details and default or/and older status
 from spy_details import spy
 from globals import STATUS_MESSAGES, current_status_message
+
+# importing termcolor colorful output
 from termcolor import colored
 
-# meathod to add status
+# function to add status
 def add_status(current_status_message):
 
-    # status in present
+    # status in beginning
     updated_status_message = None
 
     # check if current status is set or not
@@ -14,14 +17,15 @@ def add_status(current_status_message):
     else:
         print 'You don\'t have any status message currently \n'
 
-    # Ask user to choose default status or an old status.
-    default = raw_input(colored("Do you want to select from the older status (y/n)? ",'teal'))
+    # Ask user for choose default status or an old status.
+    default = raw_input(colored("Do you want to select from the older status (y/n)? ",'cyan'))
 
     # when spy wants to add another status rather than existing one
+    # .upper() converts everything to uppercase
     if default.upper() == "N":
-        new_status_message = raw_input(colored("What status message do you want to set?: ",'teal'))
+        new_status_message = raw_input(colored("What status message do you want to set?: ",'cyan'))
 
-        # validating users input using if.
+        # validating users input.
         if len(new_status_message) > 0:
             # adding new status to default status or older status list.
             STATUS_MESSAGES.append(new_status_message)
@@ -31,7 +35,7 @@ def add_status(current_status_message):
         else:
             print "You did not provided any status message. Try again."
 
-    # if spy wants to choose from existing status.
+    # spy wants to choose from existing status.
     elif default.upper() == 'Y':
 
         # counter for serial number of messages.

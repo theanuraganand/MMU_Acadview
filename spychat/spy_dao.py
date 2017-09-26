@@ -49,6 +49,7 @@ def read_spy(name):
             spy['pass'] = str(row[5])
             # Now print fetched result
             print spy['name']
+            return spy;
     except:
         print "Error: unable to fecth data"
 

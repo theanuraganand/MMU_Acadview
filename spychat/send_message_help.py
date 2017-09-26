@@ -1,7 +1,8 @@
+#importing select friend and spy details
 from select_friend import select_friend
 from spy_details import ChatMessage, friends
 
-# meathod for send help message
+# function for send help message
 def send_message_help():
     # select friend who had sent an emergency message.
     friends_choice = select_friend()
